@@ -8,14 +8,60 @@
 </head>
 <body>
     
+    <div>This is rock, paper, scissors, my dude!</div>
+
     <script>
+        
+        let options = ['rock', 'paper', 'scissors'];
+        let randomChoice;
+        let computer;
+        let player = 'ROCK';
+
+        function getComputerChoice() {
+            randomChoice = Math.floor(Math.random() * options.length);
+            computer = options[randomChoice];
+        }
+
+        function playRound(computerSelection, playerSelection) {
+            getComputerChoice();
+            computerSelection = computer;
+            playerSelection = player.toLowerCase();
+            console.log("Computer picked " + computerSelection);
+            console.log("Player picked " + playerSelection);
+            if (computerSelection === playerSelection){
+                console.log("It's a tie! Neither wins!");
+            } else if (computerSelection === 'rock' && playerSelection === 'paper') {
+                console.log("Paper beats Rock! You win!");
+            } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
+                console.log("Rock beats Scissors! You loose!");
+            } else if (computerSelection === 'paper' && playerSelection === 'rock') {
+                console.log("Paper beats Rock! You lose!");
+            } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
+                console.log("Scissors beats Paper! You win!");
+            } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
+                console.log("Scissors beats Paper! You lose!");
+            } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
+                console.log("Rock beats Scissors! You win!");            
+            } else {
+                console.log("Something is awry, my dude!"); 
+            }
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                playRound();
+                console.log("Number of rounds played: " + (i + 1));
+            }
+        }
 
         
 
 
 
 
-
+        //Make the printout have capitalized words
+        //(e.g. "Computer picked Rock" "Player picked Paper")
+        //switch from console.log to return
 
 
 
