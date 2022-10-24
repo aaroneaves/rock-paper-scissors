@@ -5,17 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
+    <style>
+        #item {
+          font-size: 50px;  
+          margin: 50vh;
+        }
+    </style>
 </head>
 <body>
     
-    <div>This is rock, paper, scissors, my dude!</div>
+    <div id="item">You just played rock, paper, scissors, my dude!</div>
 
     <script>
         
         let options = ['rock', 'paper', 'scissors'];
         let randomChoice;
         let computer;
-        let player = 'ROCK';
+        let player; 
+        let playerWins = 0;
+        let computerWins = 0;
+        let playAgain;
 
         function getComputerChoice() {
             randomChoice = Math.floor(Math.random() * options.length);
@@ -25,50 +34,74 @@
         function playRound(computerSelection, playerSelection) {
             getComputerChoice();
             computerSelection = computer;
+            player = prompt("Battle your opponent! \nPick Rock, Paper, or Scissors!");
             playerSelection = player.toLowerCase();
-            console.log("Computer picked " + computerSelection);
-            console.log("Player picked " + playerSelection);
+
             if (computerSelection === playerSelection){
-                console.log("It's a tie! Neither wins!");
+                alert("You both picked the same thing!")
+                alert("It's a tie! Neither wins!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'rock' && playerSelection === 'paper') {
-                console.log("Paper beats Rock! You win!");
+                ++playerWins;
+                alert("You picked Paper. Computer picked Rock.")
+                alert("Paper beats Rock! You win!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
-                console.log("Rock beats Scissors! You loose!");
+                ++computerWins;
+                alert("You picked Scissors. Computer picked Rock.")
+                alert("Rock beats Scissors! You lose!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'paper' && playerSelection === 'rock') {
-                console.log("Paper beats Rock! You lose!");
+                ++computerWins;
+                alert("You picked Rock. Computer picked Paper.")
+                alert("Paper beats Rock! You lose!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
-                console.log("Scissors beats Paper! You win!");
+                ++playerWins;
+                alert("You picked Scissors. Computer picked Paper.")
+                alert("Scissors beats Paper! You win!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-                console.log("Scissors beats Paper! You lose!");
+                ++computerWins;
+                alert("You picked Paper. Computer picked Scissors.")
+                alert("Scissors beats Paper! You lose!");
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
-                console.log("Rock beats Scissors! You win!");            
+                ++playerWins;  
+                alert("You picked Rock. Computer picked Scissors.")
+                alert("Rock beats Scissors! You win!");     
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             } else {
-                console.log("Something is awry, my dude!"); 
+                alert("Something is awry, my dude!"); 
+                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
             }
         }
 
         function game() {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++){
                 playRound();
-                console.log("Number of rounds played: " + (i + 1));
             }
+            alert("Game Over!");
+            alert(`Final Score    Player: ${playerWins}    Computer: ${computerWins}`);
+            if (playerWins > computerWins){
+                alert("You win!");
+            } else if (computerWins > playerWins){
+                alert("You lose!");
+            } else {
+                alert("It's a tie!");
+            }
+            playAgain = prompt("Play again!?    Y or N");
+            playAgain = playAgain.toLowerCase();
+            if (playAgain === 'y') {
+                playerWins = 0;
+                computerWins = 0;
+                game();
+            } 
         }
 
-        
-
-
-
-
-        //Make the printout have capitalized words
-        //(e.g. "Computer picked Rock" "Player picked Paper")
-        //switch from console.log to return
-
-
+        game()
 
     </script>
-
-
-
 
 </body>
 </html>
