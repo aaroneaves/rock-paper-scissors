@@ -12,6 +12,8 @@
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
 
+    <div id="results"></div>
+
     <script>
         let options = ['rock', 'paper', 'scissors'];
         let randomChoice;
@@ -19,7 +21,6 @@
         let playerWins = 0;
         let computerWins = 0;
         let playAgain;
-
         let buttonPressed; 
         
         const rockButton = document.querySelector('#rock');
@@ -40,48 +41,35 @@
             playRound();
         });
 
+        let results = document.querySelector('#results');
+
         function playRound(computerSelection, playerSelection) {
             getComputerChoice();
             computerSelection = computer;
             playerSelection = buttonPressed;
 
             if (computerSelection === playerSelection){
-                alert("You both picked the same thing!")
-                alert("It's a tie! Neither wins!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You both picked the same thing! It's a tie! Neither wins! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'rock' && playerSelection === 'paper') {
                 ++playerWins;
-                alert("You picked Paper. Computer picked Rock.")
-                alert("Paper beats Rock! You win!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Paper. Computer picked Rock. Paper beats Rock! You win! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
                 ++computerWins;
-                alert("You picked Scissors. Computer picked Rock.")
-                alert("Rock beats Scissors! You lose!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Scissors. Computer picked Rock. Rock beats Scissors! You lose! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'paper' && playerSelection === 'rock') {
                 ++computerWins;
-                alert("You picked Rock. Computer picked Paper.")
-                alert("Paper beats Rock! You lose!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Rock. Computer picked Paper. Paper beats Rock! You lose! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
                 ++playerWins;
-                alert("You picked Scissors. Computer picked Paper.")
-                alert("Scissors beats Paper! You win!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Scissors. Computer picked Paper. Scissors beats Paper! You win! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
                 ++computerWins;
-                alert("You picked Paper. Computer picked Scissors.")
-                alert("Scissors beats Paper! You lose!");
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Paper. Computer picked Scissors. Scissors beats Paper! You lose! Player: ${playerWins} Computer: ${computerWins}`;
             } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
                 ++playerWins;  
-                alert("You picked Rock. Computer picked Scissors.")
-                alert("Rock beats Scissors! You win!");     
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `You picked Rock. Computer picked Scissors. Rock beats Scissors! You win! Player: ${playerWins} Computer: ${computerWins}`;    
             } else {
-                alert("Something is awry, my dude!"); 
-                alert(`Player: ${playerWins}    Computer: ${computerWins}`);
+                results.textContent = `Something is awry, my dude! Player: ${playerWins} Computer: ${computerWins}`;
             }
         }
 
