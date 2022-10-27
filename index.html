@@ -5,37 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
-    <style>
-        #item {
-          font-size: 50px;  
-          margin: 50vh;
-        }
-    </style>
 </head>
 <body>
     
-    <div id="item">You just played rock, paper, scissors, my dude!</div>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
 
     <script>
-        
         let options = ['rock', 'paper', 'scissors'];
         let randomChoice;
         let computer;
-        let player; 
         let playerWins = 0;
         let computerWins = 0;
         let playAgain;
 
-        function getComputerChoice() {
-            randomChoice = Math.floor(Math.random() * options.length);
-            computer = options[randomChoice];
-        }
+        let buttonPressed; 
+        
+        const rockButton = document.querySelector('#rock');
+        rockButton.addEventListener('click', () => {
+            buttonPressed = 'rock';
+            playRound();
+        });
+
+        const paperButton = document.querySelector('#paper');
+        paperButton.addEventListener('click', () => {
+            buttonPressed = 'paper';
+            playRound();
+        });
+
+        const scissorsButton = document.querySelector('#scissors');
+        scissorsButton.addEventListener('click', () => {
+            buttonPressed = 'scissors';
+            playRound();
+        });
 
         function playRound(computerSelection, playerSelection) {
             getComputerChoice();
             computerSelection = computer;
-            player = prompt("Battle your opponent! \nPick Rock, Paper, or Scissors!");
-            playerSelection = player.toLowerCase();
+            playerSelection = buttonPressed;
 
             if (computerSelection === playerSelection){
                 alert("You both picked the same thing!")
@@ -77,6 +85,11 @@
             }
         }
 
+        function getComputerChoice() {
+            randomChoice = Math.floor(Math.random() * options.length);
+            computer = options[randomChoice];
+        }
+
         function game() {
             for (let i = 0; i < 5; i++){
                 playRound();
@@ -99,9 +112,9 @@
             } 
         }
 
-        game()
+        //game()
+
 
     </script>
-
 </body>
 </html>
