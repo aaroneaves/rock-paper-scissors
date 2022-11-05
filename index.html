@@ -9,13 +9,17 @@
 </head>
 <body>
     
+    <div id="title">Choose your weapon!</div>
+
     <div id="container">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock"></button>
+        <button id="paper"></button>
+        <button id="scissors"></button>
     </div>
 
     <div id="results"></div>
+
+    <button id="play-again">Play Again?</button>
 
     <script>
         let options = ['rock', 'paper', 'scissors'];
@@ -54,33 +58,33 @@
             playerSelection = buttonPressed;
 
             if (computerSelection === playerSelection){
-                results.textContent = `You both picked the same thing! \r\nIt's a tie! Neither wins! \r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
+                results.textContent = `You both picked the same thing!\r\nIt's a tie! Neither wins!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'rock' && playerSelection === 'paper') {
                 ++playerWins;
-                results.textContent = `You picked Paper. Computer picked Rock.\r\nPaper beats Rock! You win! \r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
+                results.textContent = `You picked Paper. Computer picked Rock.\r\nPaper beats Rock! You win!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
                 ++computerWins;
-                results.textContent = `You picked Scissors. Computer picked Rock.\r\nRock beats Scissors! You lose! \r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
+                results.textContent = `You picked Scissors. Computer picked Rock.\r\nRock beats Scissors! You lose!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'paper' && playerSelection === 'rock') {
                 ++computerWins;
-                results.textContent = `You picked Rock. Computer picked Paper. \r\nPaper beats Rock! You lose! \r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;
+                results.textContent = `You picked Rock. Computer picked Paper.\r\nPaper beats Rock! You lose!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
                 ++playerWins;
-                results.textContent = `You picked Scissors. Computer picked Paper. \r\nScissors beats Paper! You win! \r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;
+                results.textContent = `You picked Scissors. Computer picked Paper.\r\nScissors beats Paper! You win!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
                 ++computerWins;
-                results.textContent = `You picked Paper. Computer picked Scissors. \r\nScissors beats Paper! You lose! \r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;
+                results.textContent = `You picked Paper. Computer picked Scissors.\r\nScissors beats Paper! You lose!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;
             } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
                 ++playerWins;  
-                results.textContent = `You picked Rock. Computer picked Scissors. \r\nRock beats Scissors! You win! \r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;    
+                results.textContent = `You picked Rock. Computer picked Scissors.\r\nRock beats Scissors! You win!\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;    
             } 
             if (playerWins == 5){
-                results.textContent = `You win!\r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;    
+                results.textContent = `You win!\r\n\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;    
                 gameOver = true;
                 setTimeout(playAgain, 2000);
             }
             if (computerWins == 5){
-                results.textContent = `You lose!\r\n\r\nPlayer: ${playerWins} \r\nComputer: ${computerWins}`;    
+                results.textContent = `You lose!\r\n\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;    
                 gameOver = true;
                 setTimeout(playAgain, 2000);
             }
