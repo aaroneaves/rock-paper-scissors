@@ -50,7 +50,7 @@ div {
 }
 
 #play-again {
-    margin-top: 30px;
+    margin-top: 50px;
     border-radius: 5px;
     font-size: 50px;
     height: auto;
@@ -62,4 +62,25 @@ div {
 
 .hidden {
     visibility: hidden;
+}
+
+#rock:hover,
+#paper:hover,
+#scissors:hover { 
+    transform: scale(1.05);
+}
+
+#rock:active,
+#paper:active,
+#scissors:active {
+    transform: translateY(10px);
+}
+
+#play-again:hover {
+    color: white;
+    border-color: white;
+}
+
+#play-again:active {
+    transform: scale(1.1);
 }

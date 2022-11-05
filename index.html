@@ -19,7 +19,7 @@
 
     <div id="results"></div>
 
-    <button id="play-again">Play Again?</button>
+    <button id="play-again" class="hidden">Play Again?</button>
 
     <script>
         let options = ['rock', 'paper', 'scissors'];
@@ -29,6 +29,7 @@
         let computerWins = 0;
         let buttonPressed; 
         let gameOver = false;
+
         
         const rockButton = document.querySelector('#rock');
         rockButton.addEventListener('click', () => {
@@ -81,12 +82,14 @@
             if (playerWins == 5){
                 results.textContent = `You win!\r\n\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;    
                 gameOver = true;
-                setTimeout(playAgain, 2000);
+                titleButton.classList.add('hidden');
+                setTimeout(showButtons, 1000);
             }
             if (computerWins == 5){
                 results.textContent = `You lose!\r\n\r\n\r\nPlayer: ${playerWins}\r\nComputer: ${computerWins}`;    
                 gameOver = true;
-                setTimeout(playAgain, 2000);
+                titleButton.classList.add('hidden');
+                setTimeout(showButtons, 1000);
             }
         }
 
@@ -95,17 +98,22 @@
             computer = options[randomChoice];
         }      
 
-        function playAgain() {
+        const paButton = document.querySelector('#play-again');
+        const titleButton = document.querySelector('#title');
+
+        paButton.addEventListener('click', () => {
             let answer;
-            answer = prompt("Play again!?\r\nY or N");
-            answer = answer.toLowerCase();
-            if (answer === 'y') {
                 playerWins = 0;
                 computerWins = 0;
                 results.textContent = '';
                 gameOver = false;
-            }
-        }
+                paButton.classList.add('hidden');
+                titleButton.classList.remove('hidden');
+        });
+
+        function showButtons() {
+            paButton.classList.remove('hidden');
+        };
 
     </script>
 </body>
